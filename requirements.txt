@@ -4,4 +4,4 @@ scipy
 sympy
 sounddevice
 opencv-python
-pygame
+simpleaudio
