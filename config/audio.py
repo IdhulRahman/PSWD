@@ -1,5 +1,5 @@
 import numpy as np
-import sounddevice as sd
+import pygame
 import scipy.io.wavfile as wavfile
 import streamlit as st
 
@@ -20,7 +20,17 @@ def generate_bintang_kecil(fs):
     lagu1 = np.concatenate([g1, d1, c2, nol, b, g1, nol])
     bintangkecil = np.concatenate([lagu1])
     
-    sd.play(bintangkecil, fs)
-    sd.wait()
-    wavfile.write('hasil\Hasil.wav', fs, bintangkecil.astype(np.float32))
+    # Normalize the audio data to the range of int16
+    bintangkecil = (bintangkecil * 32767).astype(np.int16)
+    
+    # Save the audio as a WAV file
+    wavfile.write('hasil/Hasil.wav', fs, bintangkecil)
+
+    # Initialize pygame mixer
+    pygame.mixer.init(frequency=fs, size=-16, channels=1)
+    # Load the WAV file
+    pygame.mixer.music.load('hasil/Hasil.wav')
+    # Play the music
+    pygame.mixer.music.play()
+    
     st.write("Audio berhasil dimainkan dan disimpan sebagai 'Hasil.wav'.")
