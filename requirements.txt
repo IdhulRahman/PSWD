@@ -3,5 +3,4 @@ matplotlib
 scipy
 sympy
 sounddevice
-simpleaudio
 opencv-python
