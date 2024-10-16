@@ -4,5 +4,5 @@ scipy
 sympy
 sounddevice
 opencv-python
-simpleaudio
+simpleaudio==1.0.4
 opencv-python-headless
